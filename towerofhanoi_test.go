@@ -2,10 +2,32 @@ package tower_of_hanoi
 
 import (
 	"testing"
+
 	"github.com/stretchr/testify/assert"
 )
 
-func TestSolveShouldReturnHello(t *testing.T) {
-	assert.Equal(t, "hello!", solve())
+func TestSolveShouldSolveOneDiskProblem(t *testing.T) {
+	pegA := []int{1}
+	pegB := []int{}
+	pegC := []int{}
+	n := 1
+
+	solve(n, &pegA, &pegB, &pegC)
+
+	assert.Equal(t, pegA, []int{})
+	assert.Equal(t, pegB, []int{})
+	assert.Equal(t, pegC, []int{1})
 }
 
+func TestSolveShouldSolveTwoDiskProblem(t *testing.T) {
+	pegA := []int{2, 1}
+	pegB := []int{}
+	pegC := []int{}
+	n := 2
+
+	solve(n, &pegA, &pegB, &pegC)
+
+	assert.Equal(t, pegA, []int{})
+	assert.Equal(t, pegB, []int{})
+	assert.Equal(t, pegC, []int{2, 1})
+}
